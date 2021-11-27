@@ -10,13 +10,11 @@
         android:layout_height="match_parent"
         tools:context=".MainActivity">
 
-
-
         <TextView
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{viewModel.counter}"
+            android:text="@{viewModel.getCounter}"
             android:textSize="96sp"
             android:onClick="@{viewModel.resetCounter}"
             app:layout_constraintBottom_toBottomOf="parent"

@@ -15,8 +15,8 @@ import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
 
-    private int counter = 0;
     private boolean isRunning = false;
+    final ViewModel viewModel = new ViewModel();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,9 +50,7 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void run() {
                     if (isRunning) {
-                        counter++;
-                        TextView textView = findViewById(R.id.textView);
-                        textView.setText(Integer.toString(counter));
+                        viewModel.incrementCounter();
                     }
                 }
             });
