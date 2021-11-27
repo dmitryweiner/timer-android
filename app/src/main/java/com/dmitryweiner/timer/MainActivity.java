@@ -22,23 +22,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         final ActivityMainBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
-        final ViewModel viewModel = new ViewModel();
         binding.setViewModel(viewModel);
 
         Button buttonStart = findViewById(R.id.buttonStart);
-        buttonStart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                isRunning = true;
-            }
-        });
+        buttonStart.setOnClickListener(view -> isRunning = true);
         Button buttonStop = findViewById(R.id.buttonStop);
-        buttonStop.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                isRunning = false;
-            }
-        });
+        buttonStop.setOnClickListener(view -> isRunning = false);
         Timer timer = new Timer();
         timer.schedule(new MyTimerTask(), 1000, 1000);
     }
@@ -46,12 +35,9 @@ public class MainActivity extends AppCompatActivity {
     class MyTimerTask extends TimerTask {
         @Override
         public void run() {
-            runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    if (isRunning) {
-                        viewModel.incrementCounter();
-                    }
+            runOnUiThread(() -> {
+                if (isRunning) {
+                    viewModel.incrementCounter();
                 }
             });
         }

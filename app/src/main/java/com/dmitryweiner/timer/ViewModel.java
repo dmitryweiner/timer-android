@@ -1,12 +1,13 @@
 package com.dmitryweiner.timer;
 
+import android.util.Log;
 import android.view.View;
 
 import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
 
 public class ViewModel extends BaseObservable {
-    private int counter;
+    private int counter = 0;
 
     @Bindable
     public String getCounter() {
